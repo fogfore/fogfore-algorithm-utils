@@ -1,35 +1,35 @@
 package com.fogfore.algorithm.utils;
 
-public class TreeNode<T> {
-    private T value;
-    private TreeNode<T> left;
-    private TreeNode<T> right;
+public class TreeNode {
+    private int value;
+    private TreeNode left;
+    private TreeNode right;
 
-    public TreeNode(T value) {
+    public TreeNode(int value) {
         this.value = value;
     }
 
-    public T getValue() {
+    public int getValue() {
         return value;
     }
 
-    public void setValue(T value) {
+    public void setValue(int value) {
         this.value = value;
     }
 
-    public TreeNode<T> getLeft() {
+    public TreeNode getLeft() {
         return left;
     }
 
-    public void setLeft(TreeNode<T> left) {
+    public void setLeft(TreeNode left) {
         this.left = left;
     }
 
-    public TreeNode<T> getRight() {
+    public TreeNode getRight() {
         return right;
     }
 
-    public void setRight(TreeNode<T> right) {
+    public void setRight(TreeNode right) {
         this.right = right;
     }
 }
