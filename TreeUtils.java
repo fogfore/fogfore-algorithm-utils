@@ -1,21 +1,30 @@
 package com.fogfore.algorithm.utils;
 
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class TreeUtils {
     public static final int DEFAULT_NODE_NUM = 50;
+    public static final int MAX_VALUE = 100;
 
+    private static final ThreadLocalRandom RANDOM = ThreadLocalRandom.current();
 
-    public <T> TreeNode<T> generateTree(Class<T> clazz) {
-        return generateTree(clazz, DEFAULT_NODE_NUM);
+    public TreeNode generateTree() {
+        return generateTree(DEFAULT_NODE_NUM);
     }
 
-    public <T> TreeNode<T> generateTree(Class<T> clazz, int nodeNum) {
+    public TreeNode generateTree(int nodeNum) {
         if (nodeNum < 1) {
             return null;
         }
-//        random.next
-        return null;
+        nodeNum--;
+        TreeNode root = new TreeNode(RANDOM.nextInt(MAX_VALUE));
+        if (RANDOM.nextBoolean()) {
+            root.setLeft(generateTree(nodeNum));
+        }
+        if (RANDOM.nextBoolean()) {
+            root.setRight(generateTree(nodeNum));
+        }
+        return root;
     }
-
 }
