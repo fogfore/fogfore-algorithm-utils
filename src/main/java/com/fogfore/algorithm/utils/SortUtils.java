@@ -1,12 +1,44 @@
 package com.fogfore.algorithm.utils;
 
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.Validate;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 public class SortUtils {
     private static final ThreadLocalRandom RANDOM = ThreadLocalRandom.current();
+
+    public static void mergeSort(int[] array) {
+        mergeSort(array, new int[array.length], 0, array.length - 1);
+    }
+
+    public static void mergeSort(int[] source, int[] temp, int low, int high) {
+        if (low >= high) {
+            return;
+        }
+        int mid = (low + high) / 2;
+        mergeSort(source, temp, low, mid);
+        mergeSort(source, temp, mid + 1, high);
+
+        int i1 = low;
+        int i2 = mid + 1;
+        int i3 = low;
+        while (i1 <= mid && i2 <= high) {
+            if (source[i1] < source[i2]) {
+                temp[i3] = source[i1];
+                i1++;
+            } else {
+                temp[i3] = source[i2];
+                i2++;
+            }
+            i3++;
+        }
+        if (i1 <= mid) {
+            System.arraycopy(source, i1, temp, i3, mid - i1 + 1);
+        }
+        if (i2 <= high) {
+            System.arraycopy(source, i2, temp, i3, high - i2 + 1);
+        }
+        System.arraycopy(temp, low, source, low, high - low + 1);
+    }
 
     public static void quickSort(int[] array) {
         quickSort(array, 0, array.length - 1);
