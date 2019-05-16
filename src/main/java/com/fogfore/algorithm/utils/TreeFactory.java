@@ -49,4 +49,8 @@ public class TreeFactory {
         TreeUtils.fillByInOrder(root, list);
         return root;
     }
+
+    public static TreeNode getBalancedBinaryTree(int nodeNum, int minValue, int maxValue) {
+        return null;
+    }
 }
