@@ -1,11 +1,12 @@
 package com.fogfore.algorithm.utils;
 
 
+import java.util.List;
 import java.util.StringJoiner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class TreeUtils {
-    private static final ThreadLocal<Integer> index = new ThreadLocal<>();
+    private static final ThreadLocal<Integer> counter = new ThreadLocal<>();
 
     public static String toStringByPreOrder(TreeNode root) {
         StringJoiner joiner = new StringJoiner(",", "[", "]");
@@ -22,18 +23,12 @@ public class TreeUtils {
         toStringByPreOrder(root.getRight(), joiner);
     }
 
-    public static void fill(TreeNode root, int[] array) {
-        index.set(0);
-        fillByPreOrder(root, array);
-    }
-
-    private static void fillByPreOrder(TreeNode root, int[] array) {
+    public static void fillByPreOrder(TreeNode root, List<Integer> values) {
         if (root == null) {
             return;
         }
-        fillByPreOrder(root.getLeft(), array);
-        root.setValue(array[index.get()]);
-        index.set(index.get()+ 1);
-        fillByPreOrder(root.getRight(), array);
+        fillByPreOrder(root.getLeft(), values);
+        root.setValue(values.remove(0));
+        fillByPreOrder(root.getRight(), values);
     }
 }
