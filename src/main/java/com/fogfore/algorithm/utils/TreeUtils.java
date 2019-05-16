@@ -8,27 +8,27 @@ import java.util.concurrent.ThreadLocalRandom;
 public class TreeUtils {
     private static final ThreadLocal<Integer> counter = new ThreadLocal<>();
 
-    public static String toStringByPreOrder(TreeNode root) {
+    public static String toStringByInOrder(TreeNode root) {
         StringJoiner joiner = new StringJoiner(",", "[", "]");
-        toStringByPreOrder(root, joiner);
+        toStringByInOrder(root, joiner);
         return joiner.toString();
     }
 
-    private static void toStringByPreOrder(TreeNode root, StringJoiner joiner) {
+    public static void fillByInOrder(TreeNode root, List<Integer> values) {
         if (root == null) {
             return;
         }
-        toStringByPreOrder(root.getLeft(), joiner);
-        joiner.add(String.valueOf(root.getValue()));
-        toStringByPreOrder(root.getRight(), joiner);
+        fillByInOrder(root.getLeft(), values);
+        root.setValue(values.remove(0));
+        fillByInOrder(root.getRight(), values);
     }
 
-    public static void fillByPreOrder(TreeNode root, List<Integer> values) {
+    private static void toStringByInOrder(TreeNode root, StringJoiner joiner) {
         if (root == null) {
             return;
         }
-        fillByPreOrder(root.getLeft(), values);
-        root.setValue(values.remove(0));
-        fillByPreOrder(root.getRight(), values);
+        toStringByInOrder(root.getLeft(), joiner);
+        joiner.add(String.valueOf(root.getValue()));
+        toStringByInOrder(root.getRight(), joiner);
     }
 }
