@@ -46,7 +46,7 @@ public class TreeFactory {
         for (int value : values) {
             list.add(value);
         }
-        TreeUtils.fillByPreOrder(root, list);
+        TreeUtils.fillByInOrder(root, list);
         return root;
     }
 }
