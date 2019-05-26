@@ -14,14 +14,33 @@ public class TreeFactory {
 
     private static final ThreadLocalRandom RANDOM = ThreadLocalRandom.current();
 
+    /**
+     * 获取一棵二叉树
+     *
+     * @return 根节点
+     */
     public static TreeNode getBinaryTree() {
         return getBinaryTree(DEFAULT_NUM, MIN_VALUE, MAX_VALUE);
     }
 
+    /**
+     * 获取一棵二叉树
+     *
+     * @param nodeNum 节点数目
+     * @return 根节点
+     */
     public static TreeNode getBinaryTree(int nodeNum) {
         return getBinaryTree(nodeNum, MIN_VALUE, MAX_VALUE);
     }
 
+    /**
+     * 获取一棵二叉树
+     *
+     * @param nodeNum  节点数目
+     * @param minValue 最小值
+     * @param maxValue 最大值
+     * @return 根节点
+     */
     public static TreeNode getBinaryTree(int nodeNum, int minValue, int maxValue) {
         if (nodeNum < 1) {
             return null;
@@ -34,6 +53,14 @@ public class TreeFactory {
         return root;
     }
 
+    /**
+     * 获取一棵二叉搜索树
+     *
+     * @param nodeNum  节点数目
+     * @param minValue 最小值
+     * @param maxValue 最大值
+     * @return 根节点
+     */
     public static TreeNode getBinarySearchTree(int nodeNum, int minValue, int maxValue) {
         Validate.inclusiveBetween(0, maxValue - 1, minValue);
         Validate.inclusiveBetween(minValue + 1, Integer.MAX_VALUE - 1, maxValue);
@@ -50,7 +77,15 @@ public class TreeFactory {
         return root;
     }
 
-    public static TreeNode getBalancedBinaryTree(int nodeNum, int minValue, int maxValue) {
+    /**
+     * 获取一个AVL树
+     *
+     * @param nodeNum  节点数目
+     * @param minValue 最小值
+     * @param maxValue 最大值
+     * @return 根节点
+     */
+    public static TreeNode getBalancedBinarySearchTree(int nodeNum, int minValue, int maxValue) {
         return null;
     }
 }

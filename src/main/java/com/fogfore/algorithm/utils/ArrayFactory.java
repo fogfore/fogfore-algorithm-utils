@@ -9,14 +9,33 @@ public class ArrayFactory {
 
     private static final ThreadLocalRandom RANDOM = ThreadLocalRandom.current();
 
+    /**
+     * 获取一维数组
+     *
+     * @return
+     */
     public static int[] getOneArray() {
         return getOneArray(MAX_LEN, MIN_VALUE, MAX_VALUE);
     }
 
+    /**
+     * 获取一维数组
+     *
+     * @param len 数组长度
+     * @return
+     */
     public static int[] getOneArray(int len) {
         return getOneArray(len, MIN_VALUE, MAX_VALUE);
     }
 
+    /**
+     * 获取一维数组
+     *
+     * @param len      数组长度
+     * @param minValue 最小值
+     * @param maxValue 最大值
+     * @return
+     */
     public static int[] getOneArray(int len, int minValue, int maxValue) {
         if (len < 1 || !(0 <= minValue && minValue < maxValue && maxValue < Integer.MAX_VALUE)) {
             return null;
@@ -28,6 +47,14 @@ public class ArrayFactory {
         return array;
     }
 
+    /**
+     * 获取有序不重复的一维数组
+     *
+     * @param len      数组长度
+     * @param minValue 最小值
+     * @param maxValue 最大值
+     * @return
+     */
     public static int[] getOrderUnrepeatedArray(int len, int minValue, int maxValue) {
         int delta = maxValue - (minValue + len - 1);
         if (delta < 0) {
@@ -48,6 +75,14 @@ public class ArrayFactory {
         return array;
     }
 
+    /**
+     * 获取有序的一维数组
+     *
+     * @param len      数组长度
+     * @param minValue 最小值
+     * @param maxValue 最大值
+     * @return
+     */
     public static int[] getOrderArray(int len, int minValue, int maxValue) {
         if (minValue >= maxValue) {
             return null;
@@ -57,10 +92,26 @@ public class ArrayFactory {
         return array;
     }
 
+    /**
+     * 获取二维数组
+     *
+     * @param rowNum 行数
+     * @param colNum 列数
+     * @return
+     */
     public static int[][] getTwoArray(int rowNum, int colNum) {
         return getTwoArray(rowNum, colNum, MIN_VALUE, MAX_VALUE);
     }
 
+    /**
+     * 获取二维数组
+     *
+     * @param rowNum   行数
+     * @param colNum   列数
+     * @param minValue 最小值
+     * @param maxValue 最大值
+     * @return
+     */
     public static int[][] getTwoArray(int rowNum, int colNum, int minValue, int maxValue) {
         if (rowNum < 1 || colNum < 1 || !(0 <= minValue && minValue < maxValue && maxValue < Integer.MAX_VALUE)) {
             return null;
